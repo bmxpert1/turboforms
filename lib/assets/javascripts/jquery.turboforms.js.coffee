@@ -11,6 +11,7 @@ $.fn.extend
       $el.data('type', 'html')
 
       $el.bind 'ajax:beforeSend', (event, xhr, status) ->
+        TL.cacheCurrentPage()
         TL.triggerEvent 'page:fetch'
 
       $el.bind 'ajax:complete', (event, xhr, status) ->
