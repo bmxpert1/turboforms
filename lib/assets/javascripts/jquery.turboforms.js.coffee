@@ -15,6 +15,8 @@ $.fn.extend
         TL.triggerEvent 'page:fetch'
 
       $el.bind 'ajax:complete', (event, xhr, status) ->
+        TL.triggerEvent 'page:receive'
+        
         doc = createDocument xhr.responseText
 
         TL.changePage TL.extractTitleAndBody(doc)...
