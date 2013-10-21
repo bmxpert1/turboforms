@@ -13,7 +13,7 @@ module Turboforms
       if options.has_key?(:turboform) && options.delete(:turboform)
         options[:html] ||= {}
         options[:html]["data-turboform"] = true
-        options[:remote] = true
+        options.delete(:remote)
       end
 
       form_for_without_data_turboform(
@@ -29,7 +29,7 @@ module Turboforms
       if options.has_key?(:turboform) && options.delete(:turboform)
         options[:data] ||= {}
         options[:data]["turboform"] = true
-        options[:remote] = true
+        options.delete(:remote)
       end
 
       form_tag_without_data_turboform(
