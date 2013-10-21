@@ -5,15 +5,15 @@ $.fn.extend
   turboForms: (options) ->
     return @each (i, el) ->
       createDocument = TL.browserCompatibleDocumentParser()
-      el = $(el)
+      $el = $(el)
 
-      el.data('remote', true)
-      el.data('type', 'html')
+      $el.data('remote', true)
+      $el.data('type', 'html')
 
-      el.bind 'ajax:beforeSend', (event, xhr, status) ->
+      $el.bind 'ajax:beforeSend', (event, xhr, status) ->
         TL.triggerEvent 'page:fetch'
 
-      el.bind 'ajax:complete', (event, xhr, status) ->
+      $el.bind 'ajax:complete', (event, xhr, status) ->
         doc = createDocument xhr.responseText
 
         TL.changePage TL.extractTitleAndBody(doc)...
